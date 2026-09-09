@@ -299,14 +299,6 @@ langchain-core
 langchain-groq
 ```
 
-# Environment Variables
-
-The application requires:
-
-```env
-GROQ_API_KEY=your_groq_api_key_here
-```
-
 # Example
 
 ### Input
@@ -353,46 +345,6 @@ By building this project, you will learn:
 13. LCEL
 14. Groq LLM
 15. API error handling
-
----
-
-# Future Improvements
-
-## Version 2
-
-* PDF upload
-* PDF summarization
-* DOCX summarization
-* TXT file upload
-* Multiple language support
-
-## Version 3
-
-* Download summary as TXT
-* Download summary as PDF
-* Summary history
-* Database integration
-
-## Version 4
-
-* User registration
-* Login
-* User dashboard
-* Saved summaries
-
-## Version 5
-
-* RAG
-* FAISS
-* Vector database
-* Document Q&A
-
-## Version 6
-
-* LangGraph workflow
-* AI agents
-* Streaming responses
-* Multiple AI models
 
 # Project Goal
 
