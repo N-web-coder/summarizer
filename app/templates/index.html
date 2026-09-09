@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Text Summarizer</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="header">
+
+            <div class="badge">
+                AI POWERED
+            </div>
+
+            <h1>
+                AI Text Summarizer
+            </h1>
+
+            <p>
+                Transform long text into a clear and concise summary.
+            </p>
+
+        </header>
+
+
+        <main>
+
+            <!-- ================= INPUT CARD ================= -->
+
+            <section class="card">
+
+                <!-- SUMMARY OPTIONS -->
+
+                <div class="options">
+
+                    <div class="option">
+
+                        <label for="style">
+                            Summary Style
+                        </label>
+
+                        <select id="style">
+
+                            <option value="simple">
+                                Simple
+                            </option>
+
+                            <option value="professional">
+                                Professional
+                            </option>
+
+                            <option value="bullet_points">
+                                Bullet Points
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="option">
+
+                        <label for="length">
+                            Summary Length
+                        </label>
+
+                        <select id="length">
+
+                            <option value="short">
+                                Short
+                            </option>
+
+                            <option
+                                value="medium"
+                                selected
+                            >
+                                Medium
+                            </option>
+
+                            <option value="detailed">
+                                Detailed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= FILE UPLOAD ================= -->
+
+                <div class="upload-section">
+
+                    <h3>
+                        Upload Document
+                    </h3>
+
+                    <p class="upload-help">
+                        Upload TXT, PDF or DOCX file
+                    </p>
+
+                    <input
+                        type="file"
+                        id="fileInput"
+                        accept=".txt,.pdf,.docx"
+                    >
+
+                    <p id="fileName"></p>
+
+                </div>
+
+
+                <!-- ================= TEXT INPUT ================= -->
+
+                <label for="text">
+                    Enter your text
+                </label>
+
+                <textarea
+                    id="text"
+                    placeholder="Paste your article, notes, documentation or any long text here..."
+                ></textarea>
+
+
+                <!-- ================= INPUT STATS ================= -->
+
+                <div class="stats">
+
+                    <span id="characters">
+                        0 characters
+                    </span>
+
+                    <span id="words">
+                        0 words
+                    </span>
+
+                </div>
+
+
+                <!-- ================= BUTTONS ================= -->
+
+                <div class="buttons">
+
+                    <button
+                        id="clearBtn"
+                        class="secondary"
+                    >
+                        Clear
+                    </button>
+
+                    <button
+                        id="summarizeBtn"
+                        class="primary"
+                    >
+                        Summarize
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= RESULT CARD ================= -->
+
+            <section
+                id="resultCard"
+                class="card result hidden"
+            >
+
+                <!-- RESULT HEADER -->
+
+                <div class="result-header">
+
+                    <h2>
+                        Summary
+                    </h2>
+
+
+                    <div class="result-actions">
+
+                        <button
+                            id="copyBtn"
+                            class="copy"
+                        >
+                            Copy
+                        </button>
+
+
+                        <!-- <button
+                            id="downloadTxtBtn"
+                            class="copy"
+                        >
+                            Download TXT
+                        </button>
+
+                        <button
+                            id="downloadDocxBtn"
+                            class="copy"
+                        >
+                            Download DOCX
+                        </button> -->
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= LOADING ================= -->
+
+                <div
+                    id="loading"
+                    class="loading hidden"
+                >
+                    Generating your summary...
+                </div>
+
+
+                <!-- ================= ERROR ================= -->
+
+                <div
+                    id="error"
+                    class="error hidden"
+                ></div>
+
+
+                <!-- ================= DOCUMENT STATS ================= -->
+
+                <div
+                    id="documentStats"
+                    class="document-stats hidden"
+                >
+
+                    <div class="stat-box">
+
+                        <span class="stat-label">
+                            Characters
+                        </span>
+
+                        <strong id="resultCharacters">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <span class="stat-label">
+                            Words
+                        </span>
+
+                        <strong id="resultWords">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <span class="stat-label">
+                            Chunks
+                        </span>
+
+                        <strong id="resultChunks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= SUMMARY ================= -->
+
+                <div
+                    id="summary"
+                    class="summary"
+                ></div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+            FastAPI + LangChain + Groq
+        </footer>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="/static/app.js"></script>
+
+</body>
+
+</html>
